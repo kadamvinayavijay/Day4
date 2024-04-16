@@ -1,0 +1,97 @@
+class Product:
+    def __init__(self, name, price, quantity):
+        self.__name = name
+        self.__price = price
+        self.__quantity = quantity
+
+    def get_name(self):
+        return self.__name
+
+    def get_price(self):
+        return self.__price
+
+    def get_quantity(self):
+        return self.__quantity
+
+    def set_quantity(self, quantity):
+        self.__quantity = quantity
+
+class ElectronicProduct(Product):
+    def __init__(self, name, price, quantity, brand, model):
+        super().__init__(name, price, quantity)
+        self.__brand = brand
+        self.__model = model
+
+    def get_brand(self):
+        return self.__brand
+
+    def get_model(self):
+        return self.__model
+
+class ClothingProduct(Product):
+    def __init__(self, name, price, quantity, size, color):
+        super().__init__(name, price, quantity)
+        self.__size = size
+        self.__color = color
+
+    def get_size(self):
+        return self.__size
+
+    def get_color(self):
+        return self.__color
+
+class ShoppingCart:
+    def __init__(self):
+        self.__products = []
+
+    def add_product(self, product):
+        self.__products.append(product)
+
+    def remove_product(self, product):
+        self.__products.remove(product)
+
+    def get_total_cost(self):
+        total_cost = 0
+        for product in self.__products:
+            total_cost += product.get_price() * product.get_quantity()
+        return total_cost
+
+class Order:
+    def __init__(self):
+        self.__products = []
+
+    def add_product(self, product):
+        self.__products.append(product)
+
+    def remove_product(self, product):
+        self.__products.remove(product)
+
+    def get_total_cost(self):
+        total_cost = 0
+        for product in self.__products:
+            total_cost += product.get_price() * product.get_quantity()
+        return total_cost
+
+# Example usage
+cart = ShoppingCart()
+
+product1 = Product("Notebook", 5, 10)
+product2 = ElectronicProduct("Smartphone", 200, 5, "Apple", "iPhone 12")
+product3 = ClothingProduct("T-Shirt", 15, 20, "M", "Red")
+
+cart.add_product(product1)
+cart.add_product(product2)
+cart.add_product(product3)
+
+print("Total cost:", cart.get_total_cost())
+
+order = Order()
+
+order.add_product(product1)
+order.add_product(product2)
+order.add_product(product3)
+
+print("Order total cost:", order.get_total_cost())
+
+Total cost: 1350
+Order total cost: 1350
