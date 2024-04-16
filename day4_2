@@ -1,0 +1,23 @@
+class Person:
+    def __init__(self, name, age):
+        self.__name = name
+        self.__age = age
+
+    def get_age(self):
+        return self.__age
+
+    def is_eligible_to_vote(self):
+        if self.__age >= 18:
+            return True
+        else:
+            return False
+
+# Demonstration
+person = Person("John Doe", 19)
+print(f"Name: {person._Person__name}") # This is not recommended, use getter instead
+print(f"Age: {person.get_age()}")
+print(f"Eligible to vote: {person.is_eligible_to_vote()}")
+
+Name: John Doe
+Age: 19
+Eligible to vote: True
