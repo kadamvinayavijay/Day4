@@ -1,0 +1,51 @@
+# Base class
+class Shape:
+    def __init__(self, name):
+        self.name = name
+
+    def area(self):
+        pass
+
+    def perimeter(self):
+        pass
+
+# Derived class
+class Circle(Shape):
+    def __init__(self, radius):
+        super().__init__("Circle")
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * (self.radius ** 2)
+
+    def perimeter(self):
+        return 2 * 3.14 * self.radius
+
+# Derived class
+class Rectangle(Shape):
+    def __init__(self, length, breadth):
+        super().__init__("Rectangle")
+        self.length = length
+        self.breadth = breadth
+
+    def area(self):
+        return self.length * self.breadth
+
+    def perimeter(self):
+        return 2 * (self.length + self.breadth)
+
+# Demonstration
+circle = Circle(5)
+rectangle = Rectangle(4, 5)
+
+print(f"Area of {circle.name}: {circle.area()}")
+print(f"Perimeter of {circle.name}: {circle.perimeter()}")
+
+print(f"Area of {rectangle.name}: {rectangle.area()}")
+print(f"Perimeter of {rectangle.name}: {rectangle.perimeter()}")
+
+          
+Area of Circle: 78.5
+Perimeter of Circle: 31.400000000000002
+Area of Rectangle: 20
+Perimeter of Rectangle: 18
