@@ -1,0 +1,78 @@
+class Employee:
+    def __init__(self, name, employee_id):
+        self.__name = name
+        self.__employee_id = employee_id
+        self.__salary = 0
+
+    def get_name(self):
+        return self.__name
+
+    def set_name(self, name):
+        self.__name = name
+
+    def get_employee_id(self):
+        return self.__employee_id
+
+    def set_employee_id(self, employee_id):
+        self.__employee_id = employee_id
+
+    def get_salary(self):
+        return self.__salary
+
+    def set_salary(self, salary):
+        self.__salary = salary
+
+class FullTimeEmployee(Employee):
+    def __init__(self, name, employee_id, annual_salary):
+        super().__init__(name, employee_id)
+        self.set_salary(annual_salary)
+
+    def calculate_salary(self):
+        return self.get_salary() / 12
+
+class PartTimeEmployee(Employee):
+    def __init__(self, name, employee_id, hourly_rate, hours_worked):
+        super().__init__(name, employee_id)
+        self.__hourly_rate = hourly_rate
+        self.__hours_worked = hours_worked
+
+    def set_hourly_rate(self, hourly_rate):
+        self.__hourly_rate = hourly_rate
+
+    def set_hours_worked(self, hours_worked):
+        self.__hours_worked = hours_worked
+
+    def get_hourly_rate(self):
+        return self.__hourly_rate
+
+    def get_hours_worked(self):
+        return self.__hours_worked
+
+    def calculate_salary(self):
+        return self.get_hourly_rate() * self.get_hours_worked()
+
+# Demonstration
+full_time_employee = FullTimeEmployee("John Doe", 12345, 60000)
+part_time_employee = PartTimeEmployee("Jane Doe", 23456, 20, 40)
+
+print(f"Full-time employee name: {full_time_employee.get_name()}")
+print(f"Full-time employee ID: {full_time_employee.get_employee_id()}")
+print(f"Full-time employee monthly salary: {full_time_employee.calculate_salary()}")
+
+print(f"Part-time employee name: {part_time_employee.get_name()}")
+print(f"Part-time employee ID: {part_time_employee.get_employee_id()}")
+print(f"Part-time employee hourly rate: {part_time_employee.get_hourly_rate()}")
+print(f"Part-time employee hours worked: {part_time_employee.get_hours_worked()}")
+print(f"Part-time employee salary: {part_time_employee.calculate_salary()}")
+
+
+Full-time employee name: John Doe
+Full-time employee ID: 12345
+Full-time employee monthly salary: 5000.0
+Part-time employee name: Jane Doe
+Part-time employee ID: 23456
+Part-time employee hourly rate: 20
+Part-time employee hours worked: 40
+Part-time employee salary: 800
+
+          
